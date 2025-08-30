@@ -1,0 +1,341 @@
+Arrhythmias Analysis with efficient machine learning classification algorithms
+
+**Holly Kwan**  
+
+
+## I. INTRODUCTION
+
+This paper aims to classify four distinct types of short electrocardiogram (ECG) segments using two efficient cardiac arrhythmia classification methods on a dataset from the PhysioNet Computing in Cardiology Challenge (CinC) in 2017 [4].
+
+The four distinct types of short electrocardiogram (ECG) segments are listed below. When an electrocardiogram (ECG) segment is too noisy to be classified, the segment is denoted with the symbol "~" as the noise segment. Normal sinus rhythm is denoted as "N", Atrial fibrillation (AF) as "A", and all other types of cardiac rhythm as "O". The designated dataset also includes a noise segment, denoted by "~". The number and percentage of each of the four types are shown in Table 1 [2, 6].
+
+**Table 1:** Atrial fibrillation (AF) consisted of 9% of short electrocardiogram (ECG) segments in the designated dataset.
+
+This designated dataset contained 12186 electrocardiogram (ECG) recordings, that had been collected and shared with the PhysioNet Computing in Cardiology Challenge (CinC) in 2017 by a corporation, AliveCor [2, 7].
+
+AliveCor is a medical device corporation that has made a significant impact on producing ECG technology and products. AliveCor has specialised in building proprietary electrocardiogram (ECG) products.
+
+One of the most innovative products of AliveCor is producing and designing electrocardiogram (ECG) related software for the Apple Watch, to detect normal sinus rhythm and all types of cardiac arrhythmias [7].
+
+Electrocardiography evaluates, examines, and analyses abnormal cardiac rate to produce an electrocardiogram (ECG). A cardiac arrhythmia can be developed by ectopically receiving an abnormal heart rate at the sinus node or an abnormal place [10].
+
+An electrocardiogram (ECG) can detect multiple types of cardiac arrhythmia by assessing and gauging the abnormality or irregularities in the electrical signals of the heart [15].
+
+Patients with abnormal heart rate are usually diagnosed with one or more specific types of cardiac arrhythmia. There are two different types of cardiac arrhythmia, the rapid heart rate of tachycardia, and the comparatively slow heart rate of bradycardia, respectively [15].
+
+Tachycardia occurs when the heart beats more than 100 times per minute. On the contrary, patients with a moderately slow heart rate of 60 beats per minute or less have bradycardia. There are three main types of tachycardia.
+
+The most relevant type of tachycardia is atrial fibrillation (AF), which is also the most common type of supraventricular tachycardia [15]. Atrial fibrillation (AF) is the most common type of cardiac arrhythmia with a relatively common occurrence in approximately 2% of the general population [1, 5, 11].
+
+Atrial fibrillation (AF) has potentially caused obesity and adiposity-related comorbidities such as hypercholesterolemia, hypoxemia, hyperlipidaemia, and other medical conditions in people with sedentary and unhealthy lifestyle [10].
+
+The other type of cardiac arrhythmia is atrial tachycardia, which is an arrhythmia that started in the atria of the heart. Another type of cardiac arrhythmia is supraventricular tachycardia, which is an arrhythmia that started above the ventricles of the heart. A different type of tachycardia is ventricular tachycardia, an arrhythmia that originates in the ventricles of the heart [15].
+
+This designated dataset was divided into two separate groups. The first group contains signals of electrocardiogram (ECG) segments and the second group consists of specific features gathered from the extraction of the electrocardiogram (ECG) waveforms using signal processing algorithms [3].
+
+The terms SignalsDatasets and FeaturesDatasets denote, respectively, the two abovementioned groups of datasets. Both Signals Datasets and Features Datasets can be classified using feature-based and deep learning algorithms.
+
+For both FeaturesDatasets and SignalsDatasets, a state-of-the-art feature-based algorithm, the Support Vector Machine (SVM) classification is used to implement machine learning classification using the R programming language.
+
+In addition to one feature-based algorithm, another specific deep learning algorithm with the unique feature of having convolutional layers in a neural net, the Convolutional Neural Network (ConvNet) approach, is implemented on SignalsDatasets to classify the types of short electrocardiogram (ECG) segments for signals of a specific length, and the electrocardiogram (ECG) waveforms that were collected using signal processing algorithms for FeaturesDatasets.
+
+## II. METHODOLOGY
+
+### A. The Support Vector Machine (SVM)
+
+The Support Vector Machine (SVM) classification is selected as the feature-based approach to accurately train on those four types of electrocardiogram (ECG) segment for both FeaturesDatasets and SignalsDatasets. The chosen class for this Support Vector Machine (SVM) classification is the Support Vector Classification (SVC) algorithm.
+
+The computational complexity was taken into consideration when selecting a feature-based approach. The Support Vector Classification (SVC) algorithm could not be running slower than linear time due to how the optimal hyperplane works with positive and negative vectors. When the decision boundary is nonlinear, a kernel function
+
+K (x, x′) = < h(x), h(x′) >
+
+locates an optimal hyperplane by taking nonlinear decision boundaries into consideration [8]. For both FeaturesDatasets and SignalsDatasets, the hyperplane of the Support Vector Classification (SVC) algorithm is separated by a nonlinear decision boundary.
+
+The margin impacts the location of the optimal hyperplane. The margin is calculated from the distance between the hyperplane and support vectors; the higher the value of the weight γ, the shorter the distance of the support vectors to the hyperplane [14].
+
+Four types of kernels of the Support Vector Classification (SVC) algorithm were evaluated: linear, polynomial, radial basis function (RBF), and sigmoid kernel. The chosen kernel for implementation using the R programming language is the radial basis function (RBF) kernel.
+
+For cross-validation using radial basis function (RBF) kernel, the regularisation parameter is the cost parameter C instead of the more common regularisation parameter λ [14]. The cost parameter C, and the gamma γ, are the two turning parameters of the radial basis function (RBF) kernel.
+
+### B. The Convolutional Neural Network (ConvNet)
+
+The Convolutional Neural Network (ConvNet) has been an extensively leading method used for image analysis and recognition in computer vision research [12]. The Convolutional Neural Network (ConvNet) can analyse the spatial and temporal dependencies in images with the filters to traverse matrices [12].
+
+For this paper, the Convolutional Neural Network (ConvNet) is the end-to-end or deep learning approach due to the unique aspect of translation invariance, weights replication and sparse connectivity [13]. There are four most important properties for the Convolutional Neural Network (ConvNet), local connections, shared weights, pooling, and multiple layers [13].
+
+The weights in the convolutional layers are optimised to maximise the performance of the Convolutional Neural Network (ConvNet) [3]. Furthermore, there are relatively fewer data preprocessing to complete compared to other deep-learning algorithms for the implementation of Convolutional Neural Network (ConvNet).
+
+The Convolutional Neural Network (ConvNet) has a unique architecture with convolutional layers, which are positioned before the hidden and output layers [9]. The Convolutional Neural Network (ConvNet) contained a stack of vectors as input. The input layer to the Convolutional Neural Network (ConvNet) is the convolutional layers.
+
+Convolutional layers are different from other layers in neural nets. The convolutional layers store the filter and feature vectors [13]. The unique architecture of the Convolutional Neural Network (ConvNet) consisted of convolutional layers and pooling which will be discussed below.
+
+The number of neurons in an input layer of the Convolutional Neural Network (ConvNet) could be carefully chosen based on the number of pixels. Each neuron in a convolutional layer has a local receptive field, which indicates that the neuron is not connecting to the input [13].
+
+The convolutional layers in Convolutional Neural Network (ConvNet) contained the filters that proceed with the operation to select convolved features of the original input features in matrices. Additionally, the length of one side of the filter must be smaller than the length of the vectors in the input.
+
+The neutrons in convolutional layers traverse in the matrices to search for one specific feature, also known as the filter or kernel. The features move from left to right, up to down in matrices. The frequency of the filters is imparted by the stride length. The filters cannot be less or more than two-dimensional.
+
+After running the filters, the features move to a pooling layer. In the pooling layer, the spatial size of the convolved features had reduced. The computational time had shortened as well. There are two different types of pooling, max pooling, and average pooling, respectively.
+
+Max pooling is selected instead of average pooling for implementation. The results were groups into one single feature vector. The final layer resembles a standard multilayer neural network, which will be used for deep learning classification.
+
+In this paper, the convolutional layers and max pooling in the Convolutional Neural Network (ConvNet) approach will be discussed in depth in the following experimental section. Max pooling removes the noisy component or type of short electrocardiogram (ECG) segments swiftly and carries out a denoising operation with dimension reduction.
+
+## III. EXPERIMENT
+
+FeaturesDatasets contained far fewer columns storing the electrocardiogram (ECG) features that were extracted using signal processing algorithms than SignalsDatasets [5]. FeaturesDatasets will be implemented first using the R programming language as the number of electrocardiograms (ECG) types are not as much as SignalsDatasets. The same experiment will be implemented on SignalsDatasets right after running a complete machine learning analysis using the R programming language.
+
+The Support Vector Classification (SVC) and Convolutional Neural Network (ConvNet) trained on the four types of cardiac arrhythmias and short electrocardiogram (ECG) features and wavelengths for FeaturesDataset and SignalsDatasets using the R programming language [5, 7].
+
+In this paper, the Support Vector Classification (SVC) algorithm was implemented using the R programming language with the e1017 package. Additional R packages such as class, readr, dplyr are installed for data manipulation and classification.
+
+The confusion matrices of radial basis function (RBF) kernel are generated for both FeaturesDatasets and SignalsDatasets using the R programming language. It is a good practice to convert the column type of Type to factor in the R programming language for both FeaturesDatasets and SignalsDatasets.
+
+For both FeaturesDatasets and SignalsDatasets, 65% are the training sets, and 35% are the testing tests are allocated using the R programming language. The Support Vector Classification (SVC) algorithm can provide a top-notched performance with high accuracy, specificity, and sensitivity, as well as a desirable F1 score.
+
+The 10-fold cross-validation can find the tuning parameters of the cost parameter C and the gamma γ using the R programming language. The results for the gamma γ and cost parameter C will be discussed in the next section.
+
+In this paper, the Keras package of the R programming language is installed. The R interface that runs on the TensorFlow is used for the implementation of Convolutional Neural Network (ConvNet) for both FeaturesDatasets and SignalsDatasets. TensorFlow is installed using the R programming language.
+
+The convolutional neural network (ConvNet) has three convolutional layers for implementation using the R programming for both FeaturesDatasets and SignalsDatasets. The first convolutional layers have 128 filters for both FeaturesDatasets and SignalsDatasets.
+
+After the first convolutional layers, batch normalisation was applied to the output for both FeaturesDatasets and SignalsDatasets. After batch normalisation, the max pooling layer with a grid size of c(2, 2) is implemented for both FeaturesDatasets and SignalsDatasets. The second convolutional layer has 64 filters for both FeaturesDatasets and SignalsDatasets.
+
+After the second convolutional layer, the max pooling layer with a grid size of c(2, 2) is implemented for both FeaturesDatasets and SignalsDatasets. The third convolutional layer has 32 filters for both FeaturesDatasets and SignalsDatasets. After the third convolutional layer, there is a flatten layer for both FeaturesDatasets and SignalsDatasets.
+
+After the flatten layer, there is an activation layer for both FeaturesDatasets and SignalsDatasets.
+
+All layers of the architecture of the convolutional neural network are displayed. The output shape and the number of parameters. Our results show that the number of parameters for max pooling is zero. The total number of parameters have the number as the number of trainable parameters.
+
+**Figure 1:** The implementation of radial basis function (RBF) kernel and Support Vector Classification (SVC) for FeaturesDataset.
+
+**Figure 3:** The 10-fold cross-validation of radial basis function (RBF) kernel and Support Vector Classification (SVC) for FeaturesDataset.
+
+**Figure 5:** The implementation of radial basis function (RBF) kernel and Support Vector Classification (SVC) for FeaturesDataset
+
+**Figure 7:** The confusion matrix of radial basis function (RBF) kernel and Support Vector Classification (SVC) for FeaturesDataset.
+
+**Figure 2:** The implementation of radial basis function (RBF) kernel and Support Vector Classification (SVC) for SignalsDatasets.
+
+**Figure 4:** The 10-fold cross-validation The radial basis function (RBF) kernel and Support Vector Classification (SVC) for SignalsDatasets.
+
+**Figure 6:** The implementation of radial basis function (RBF) kernel and Support Vector Classification (SVC) for SignalsDatasets.
+
+**Figure 8:** The confusion matrix of radial basis function (RBF) kernel and Support Vector Classification (SVC) for SignalsDatasets.
+
+## IV. RESULTS
+
+The implementation of the Support Vector Classification (SVC) algorithm and the Convolutional Neural Network (ConvNet) on both FeaturesDatasets and SignalsDatasets using the R programming language is shown in the Appendix section. The R packages are also listed in the Appendix section.
+
+The radial basis function (RBF) kernel is used with the Support Vector Classification (SVC) algorithm to classify the type of electrocardiogram (ECG) segments on the training set of FeaturesDatasets. Subsequently, the radial basis function (RBF) kernel is also used with the Support Vector Classification (SVC) algorithm on the training set of SignalsDatasets.
+
+The implementation of for the Support Vector Classification (SVC) on the training set of the FeaturesDataset shows that the number of support vectors is 8483. The output is shown in Figure 1.
+
+After the executing a 10-fold cross-validation with the radial basis function (RBF) on FeaturesDataset, this paper concluded that the regularisation parameter, the optimal cost C, is 8. The gamma is 0.5 as the coefficient for the radial basis function (RBF) kernel. The output is shown in Figure 3.
+
+After applying 10-fold cross-validation by explicitly setting the cost parameter C to 8 and the gamma ɣ to 0.5, the paper concluded that the number of support vectors is 4846, the accuracy is 0.701, the precision or the specificity is 0.788, the recall or the sensitivity is 0.864, and the F1 score is 0.82. The output is shown in Figure 5 and 7.
+
+The implementation of the Support Vector Classification (SVC) on the training set of SignalsDatasets shows that the number of support vectors is 8020. The output is shown in Figure 2.
+
+After the completion of 10-fold cross-validation with the radial basis function (RBF) on SignalsDatasets, this paper concluded that the regularisation parameter, the optimal cost C, is 4. The gamma is 0.5 as the coefficient for the radial basis function (RBF) kernel. The output is shown in Figure 4.
+
+After 10-fold cross-validation, by explicitly setting the cost parameter C to 4 and the gamma ɣ to 0.5, the implementation of the Support Vector Classification (SVC) with the radial basis function (RBF) kernel on the training set SignalsDatasets shows that the number of support vectors is 8177, the accuracy is 0.84, the precision or the specificity is 0.97, the recall or the sensitivity is 0.84, and the F1 score is 0.9. The output is shown in Figure 6 and 8.
+
+The Convolutional Neural Network (ConvNet) generated the following F1 score on the training set of FeaturesDatasets. The F1 score from the implementation of Convolutional Neural Network (ConvNet) is higher than from the implementation of the Support Vector Classification.
+
+The total number of parameters have the number as the number of trainable parameters for FeaturesDatasets. The number of non-trainable parameters for FeaturesDatasets is 0.
+
+Finally, the Convolutional Neural Network (ConvNet) generated the following F1 score on the training set of SignalsDatasets. The F1 score from the implementation of Convolutional Neural Network (ConvNet) is higher than from the implementation of the Support Vector Classification for SignalsDatasets.
+
+All layers of the architecture of the convolutional neural network are displayed. The output shape and the number of parameters. Our results show that the number of parameters for max pooling is zero. The implementation of Convolutional Neural Network (ConvNet) using the R programming language shows a test accuracy of over 95%.
+
+## V. CONCLUSION
+
+This paper compared a feature-based approach and a deep learning approach to classify electrocardiogram (ECG) segments.
+
+Both machine learning algorithms have excellent performance. The Convolutional Neural Network (ConvNet) demonstrated an accuracy, specificity, sensitivity, and F1 score of over 85% on both the Features Dataset and Signals Datasets [3].
+
+Moreover, the support vector machine can classify the electrocardiogram (ECG) segments of the short electrocardiogram (ECG) recordings. The F1 score is 0.82 for FeaturesDataset. The F1 scores is 0.86 for SignalsDatasets.
+
+Statistically speaking, the chosen feature-based machine learning approach of Support Vector Machine (SVM) classification with the radial basis function (RBF) kernel showed a relatively good performance to classify four different types of heart rhythms.
+
+There are other feature-based methods such as linear model, random forests, or k-nearest neighbours (kNN) that can provide solutions with excellent performance, thus, the Support Vector Machine (SVM) classification with the radial basis function (RBF) kernel option is chosen instead because of the use of support vectors.
+
+## VI. APPENDIX
+
+### A. The implementation of Support Vector Machine(SVM) with the radial basis function (RBF) kernel on FeaturesDatasets using the R programming language
+
+```r
+1 install.packages("e1071")
+2 library("e1071")
+3 library(readr)
+4 library(class)
+5 library(dplyr)
+6 train_feat <- read.csv("train_feat.csv")
+7 train_feat <- train_feat[2:190]
+8 head(train_feat)
+9 train_feat$Type <- as.factor(train_feat$Type)
+10 head(train_feat$Type)
+11 set.seed(50)
+12 s <- floor(0.65 * nrow(train_feat))
+13 set.seed(20)
+14 train_feat_index <- sample(seq_len(nrow(train_feat)), size = s)
+15 train <- train_feat[train_feat_index, ]
+16 test <- train_feat[-train_feat_index, ]
+17svmfit <- svm(Type ~., data = train, kernel = "radial", scale=FALSE)
+18 summary(svmfit)
+19 svm_tune <- tune.svm(Type ~., data=train, kernel = "radial", gamma = 2^(-1:1), cost = 2^(2:4) , scale = FALSE)
+20 svm_tune
+21 svmfit <- svm(Type ~., data = train, kernel = "radial", cost = 8, gamma = 0.5, scale = FALSE)
+22 summary(svmfit)
+23 svm.pred <- predict(svmfit, test)
+24 table1 <- table(svm.pred, test$Type)
+25 table1
+```
+
+### B. The implementation of Support Vector Machine(SVM) with the radial basis function (RBF) kernel on SignalsDatasets using the R programming language
+
+```r
+1 install.packages("e1071")
+2 library("e1071")
+3 library(readr)
+4 library(class)
+5 library(dplyr)
+6 train_signal <- read.csv("train_signal.csv")
+7 train_signal <- train_signal[2:6002]
+8 head(train_signal)
+9 train_signal$Type <- as.factor(train_signal$Type)
+10 head(train_signal$Type)
+11 set.seed(50)
+12 s <- floor(0.65 * nrow(train_signal))
+13 train_signal_index <- sample(seq_len(nrow(train_signal)), size = s)
+14 train <- train_signal[train_signal_index, ]
+15 test <- train_signal[-train_signal_index, ]
+16 svmfit <- svm(Type ~., data = train, kernel = "radial", scale=FALSE)
+17 summary(svmfit)
+18 svm_tune <- tune.svm(Type ~., data=train, kernel = "radial", gamma=seq(1/2^nrow(train_feat), 1, 0.01), cost = 2 ^seq(-6, 4, 2), scale=FALSE)
+19 svm_tune
+21 svmfit <- svm(Type ~., data = train, kernel = "radial", cost = 4, gamma = 0.5, scale = FALSE)
+22 summary(svmfit)
+23 svm.pred <- predict(svmfit, test)
+24 table1 <- table(svm.pred, test$Type)
+25 table1
+```
+
+### C. The implementation of Convolutional Neural Network (ConvNet) on FeaturesDatasets using the R programming language
+
+```r
+1 install.packages("devtools")
+2 devtools::install_github("rstudio/keras", force=TRUE)
+3 install.packages("reticulate")
+4 install.packages("remotes")
+5 library("reticulate")
+6 remotes::install_github("rstudio/tensorflow", force=TRUE)
+7 library(tensorflow)
+8 library(keras)
+9 install_keras()
+10 train_feat <- read.csv("train_feat.csv")
+11 output_n <- length(train_feat)
+22 img_width <- 20
+13 img_height <- 20
+14 target_size <- c(img_width, img_height)
+15 channels <- 3
+16 model <- keras_model_sequential() %>%
+layer_conv_2d(filters = 128, kernel_size = c(5,5), activation = "relu", input_shape = c(64,64,5)) %>%
+17 layer_activation_leaky_relu(0.5) %>%
+18 layer_batch_normalization() %>%
+19 layer_max_pooling_2d(pool_size = c(2,2)) %>%
+20 layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>%
+21 layer_max_pooling_2d(pool_size = c(2,2)) %>%
+22 layer_conv_2d(filters = 32, kernel_size = c(3,3), activation = "relu")
+23 layer_flatten() %>%
+24 layer_activation('relu') %>%
+25 summary(model)
+26 model %>% compile(
+27 optimizer = "adam",
+28 loss = "sparse_categorical_crossentropy",
+29 metrics = "accuracy"
+30 )
+31 history <- model %>%
+32 fit(
+33 x = train_feat$Type$x, y = train_feat$Type$y,
+34 epochs = 10,
+35 validation_data = unname(train_feat$Type),
+36 verbose = 2)
+37 evaluate(model, train_feat$Type $x, train_feat$Type $y, verbose = 0)
+```
+
+### D. The implementation of Convolutional Neural Network (ConvNet) on SignalsDatasets using the R programming language
+
+```r
+1 install.packages("devtools")
+2 devtools::install_github("rstudio/keras", force=TRUE)
+3 install.packages("reticulate")
+4 install.packages("remotes")
+5 library("reticulate")
+6 remotes::install_github("rstudio/tensorflow", force=TRUE)
+7 library(tensorflow)
+8 library(keras)
+9 install_keras()
+10 train_feat <- read.csv("train_signal.csv")
+11 output_n <- length(train_signal)
+22 img_width <- 20
+13 img_height <- 20
+14 target_size <- c(img_width, img_height)
+15 channels <- 3
+16 model <- keras_model_sequential() %>%
+layer_conv_2d(filters = 128, kernel_size = c(5,5), activation = "relu", input_shape = c(64,64,5)) %>%
+17 layer_activation_leaky_relu(0.5) %>%
+18 layer_batch_normalization() %>%
+19 layer_max_pooling_2d(pool_size = c(2,2)) %>%
+20 layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = "relu") %>%
+21 layer_max_pooling_2d(pool_size = c(2,2)) %>%
+22 layer_conv_2d(filters = 32, kernel_size = c(3,3), activation = "relu")
+23 layer_flatten() %>%
+24 layer_activation('relu') %>%
+25 summary(model)
+26 model %>% compile(
+27 optimizer = "adam",
+28 loss = "sparse_categorical_crossentropy",
+29 metrics = "accuracy"
+30 )
+31 history <- model %>%
+32 fit(
+33 x = train_feat$Type$x, y = train_signal $Type$y,
+34 epochs = 10,
+35 validation_data = unname(train_signal $Type),
+36 verbose = 2)
+37 evaluate(model, train_signal $Type $x, train_signal $Type $y, verbose = 0)
+```
+
+## BIBLIOGRAPHY
+
+[1] S. Datta et al., "Identifying normal, AF and other abnormal ECG rhythms using a cascaded binary classifier," 2017 Computing in Cardiology (CinC), 2017, pp. 1-4, doi: 10.22489/CinC.2017.173-154.
+
+[2] G. D. Clifford, C. Liu, B. Moody, H. L. Li-wei, I. Silva, Q. Li,. A. Johnson, and R. G. Mark, "AF Classification from a Short Single Lead Ecg Recording: the PhysioNet Computing in Cardiology Challenge. Computing in Cardiology, Vol 44, 2017
+
+[3] B. S. Chandra, C. S. Sastry, S. Jana and S. Patidar, "Atrial fibrillation detection using convolutional neural networks," 2017 Computing in Cardiology (CinC), 2017, pp. 1-4, doi: 10.22489/CinC.2017.163-226.
+
+[4] F. Andreotti, O. Carr, M. A. F. Pimentel, A. Mahdi and M. De Vos, "Comparing feature-based classifiers and convolutional neural networks to detect arrhythmia from short segments of ECG," 2017 Computing in Cardiology (CinC), 2017, pp. 1-4, doi: 10.22489/CinC.2017.360-239.
+
+[5] L. Billeci, F. Chiarugi, M. Costi, D. Lombardi and M. Varanini, "Detection of AF and other rhythms using RR variability and ECG spectral measures," 2017 Computing in Cardiology (CinC), 2017, pp. 1-4, doi: 10.22489/CinC.2017.344-144.
+
+[6] P. Bonizzi, K. Driessens and J. Karel, "Detection of atrial fibrillation episodes from short single lead recordings by means of ensemble learning," 2017 Computing in Cardiology (CinC), 2017, pp. 1-4, doi: 10.22489/CinC.2017.169-313.
+
+[7] J. A. Behar, A. A. Rosenberg, Y. Yaniv and J. Oster, "Rhythm and quality classification from short ECGs recorded using a mobile device," 2017 Computing in Cardiology (CinC), 2017, pp. 1-4, doi: 10.22489/CinC.2017.165-056.
+
+[8] P. Samui, S. S. Roy, and V. E. Balas, "Chapter 27 - Support Vector Machine: Principles, Parameters, and Applications," in Handbook of neural computation, London: Academic Press, 2017, pp. 515–513.
+
+[9] Y. Xia, N. Wulan, K. ang and H. Zhang, "Atrial Fibrillation Detection Using Stationary Wavelet Transform and Deep Learning", Computing in Cardigy (CinC), pp. 1-4, September 2017.
+
+[10] H. S. Abed and G. A. Wittert, "Obesity and atrial fibrillation", Obesity Reviews, vol. 14, no. (11), pp. 929-938, July 2013.
+
+[11] X. Du, J. Dong and C. Ma, "Is Atrial Fibrillation a Preventable Disease?", Journal of the American College of Cardiology, vol. 69, no. (15), pp. 1968-1982, April 2017..
+
+[12] S. Kiranyaz, T. Ince and M. Gabbouj, "Real-Time Patient-Specific ECG Classification by 1-D Convolutional Neural Networks", IEEE Transactions on Biomedical Engineering, vol. 63, pp. 664-675, August 2015.
+
+[13] G. Ian, B. Yoshua and C. Aaron, Deep Learning, Cambridge, CA:MIT Press, pp. 397-398, 2017.
+
+[14] N. Nuryani, B. Harjito, I. Yahya and A. Lestari, "Atrial Fibrillation Detection Using Support Vector Machine", pp. 215-218, June 2016.
+
+[15] "Arrhythmias," British Heart Foundation. https://www.bhf.org.uk/informationsupport/conditions/arrhythmias.
